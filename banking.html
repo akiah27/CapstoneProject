@@ -1,0 +1,59 @@
+<style>
+    body {
+     font-family: Arial, Helvetica, sans-serif;
+     background-color:#dddd68;
+     
+  }
+ </style>
+
+
+<h2>Your Account</h2>
+<p id="accountBalance">Account balance: $1000</p>
+<form id="depositForm">
+    <label for="deposit">Deposit Amount:</label>
+    <input type="number" id="deposit" required><br><br>
+    <input type="submit" value="Deposit">
+</form>
+<form id="withdrawalForm">
+    <label for="withdrawal">Withdrawal Amount:</label>
+    <input type="number" id="withdrawal" required><br><br>
+    <input type="submit" value="Withdraw">
+</form>
+</section>
+
+
+<script>
+let accountBalance = 1000; // Initial account balance
+
+document.getElementById("depositForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    const depositAmount = parseFloat(document.getElementById("deposit").value);
+    if (!isNaN(depositAmount) && depositAmount > 0) {
+        accountBalance += depositAmount; // Add deposit amount to balance
+        updateBalance(); // Update balance display
+    } else {
+        alert("Please enter a valid deposit amount.");
+    }
+});
+
+document.getElementById("withdrawalForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    const withdrawalAmount = parseFloat(document.getElementById("withdrawal").value);
+    if (!isNaN(withdrawalAmount) && withdrawalAmount > 0) {
+        if (withdrawalAmount <= accountBalance) {
+            accountBalance -= withdrawalAmount; // Subtract withdrawal amount from balance
+            updateBalance(); // Update balance display
+        } else {
+            alert("Insufficient funds.");
+        }
+    } else {
+        alert("Please enter a valid withdrawal amount.");
+    }
+});
+
+function updateBalance() {
+    document.getElementById("accountBalance").textContent = "Account balance: $" + accountBalance.toFixed(2);
+}
+</script>

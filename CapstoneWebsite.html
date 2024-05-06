@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta chartset="utf-8">
+<meta name="viewport" content="width=device-width, initial- scale=1">
+<title>BSU Banking Home</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+ 
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://media.bizj.us/view/img/12349615/img2527.jpg');
+    
+ }
+
+ header {
+  background-color: #eaeaeaab;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: rgb(5, 5, 5);
+
+ }
+
+ section {
+  display: -webkit-flex;
+  display: flex;
+ }
+
+ nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #dddd68;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+footer {
+  background-color: #595959;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+ </style>
+ </head>
+<body>
+
+ 
+
+<h1 style="border:rgb(192, 192, 27);border-width:5px; border-style:solid; background-color: #ccc;">Banking made easy</h1>
+    
+    
+    <header>
+      <div class="header">
+
+      <img src="/Users/akiah/Pictures/bulldogbanking.png" alt="logo" /> 
+      <h2>Bowie State Banking </h2>
+    </div>  
+    </header>
+    
+    
+    <section>
+      <nav>
+        <ul>
+          <li><a href="#">Loan</a></li>
+          <li><a href="#">Credit Cards</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Investments</a></li>
+          
+        </ul>
+      </nav>
+      
+      <article>
+        <form action="/signin" method="post">
+          <h2>Get Started</h2>
+          <label for="signinemail"> Email:</label>
+          <input type="text" id="signinemail" name="email" required><br><br>
+          <label for="signinpassword"> Password:</label>
+          <input type="password" id="signinpassword" name="password" required><br><br>
+          <input type="submit" value="Login">
+          
+          </form>
+          
+            
+            
+            
+            <script>
+              fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                  const dataContainer = document.getElementById('dataContainer');
+                  data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = `${item.email}: ${item.password}`; // Adjust based on your table structure
+                    dataContainer.appendChild(div);
+                  });
+                })
+                .catch(error => {
+                  console.error('Error fetching data:', error);
+                });
+            </script>
+        
+        <h1></h1>
+        <nav>
+            
+              
+              
+            
+          </nav>
+      </article>
+    </section>
+    
+    <footer>
+      <p>Offical site of Bowie State Banking</p>
+    </footer>
+    
+    
+   
+    
+    </body>
+    </html>
+    
+    
